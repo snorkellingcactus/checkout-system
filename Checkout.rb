@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
 
 class Checkout
-	attr_accessor :total
+	attr_writer :total
 	attr_accessor :last_scanned_item
+
+	def total
+		return Float ( sprintf('%.2f', @total) )
+	end
 
 	def initialize( rules )
 		@items=[]
