@@ -3,28 +3,28 @@
 require_relative 'Rule'
 
 class RuleLavender < Rule
-	def initialize
-			super
-			@count=0
+
+	def reset
+		super
+		@count=0
+		@price=false
 	end
 
 	def canApply( checkout )
 		if checkout.last_scanned_item.name == 'Lavender heart'
 			@count+=1
 
-			return @count >= 2
+			!@price && @price=checkout.last_scanned_item.price
+
+			return @canApply|=( @count >= 2 )
 		end
 
 		return false
 	end
 
-	def getFirstPriceDiff( checkout )
-		return 2*getLatterPriceDiff( checkout )
-	end
-	def getLatterPriceDiff( checkout )
-		return -( checkout.last_scanned_item.price - 8.50 )
+	def calcFinalPriceDiff( checkout )
+		return -@count*( @price - 8.50 )
 	end
 
-	private :getLatterPriceDiff
-	private :getFirstPriceDiff
+	private :calcFinalPriceDiff
 end
