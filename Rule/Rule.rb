@@ -1,20 +1,21 @@
 #!/usr/bin/env ruby
 
 class Rule
-	def initialize
-		@first_calculation=true
+	def reset()
+		@canApply=false
 	end
 
-	def getPriceDiff( checkout )
-			if canApply( checkout )
-				if @first_calculation
-					@first_calculation=false
+	def initialize
+		reset
+	end
 
-					return getFirstPriceDiff( checkout )
-				else
-					return getLatterPriceDiff( checkout )
-				end
+	def getFinalPriceDiff( checkout )
+			if @canApply
+				return calcFinalPriceDiff( checkout )
 			end
+
 			return 0
 	end
+
+	protected :initialize
 end
