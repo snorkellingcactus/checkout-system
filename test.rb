@@ -1,11 +1,5 @@
 #!/usr/bin/env ruby
 
-#gem 'minitest-spec-context'
-#gem 'minitest-context'
-
-#require 'minitest/context'
-#require 'minitest-spec-context'
-
 require 'minitest/autorun'
 
 require_relative 'Checkout'
@@ -27,8 +21,7 @@ describe Checkout do
 		examples=[
 			[ "001", "002", "003" ],
 			[ "001", "003", "001" ],
-			[ "001", "002", "001", "003" ],
-			[ "001", "002", "001", "003", "001" ]
+			[ "001", "002", "001", "003" ]
 		]
 
 		results=[ 66.78, 36.95, 73.76, 81.40 ]
