@@ -3,7 +3,7 @@
 class Checkout
 	attr_reader :total_with_rules
 	attr_reader :last_scanned_item
-	attr_writer :rules
+#	attr_accessor :rules
 
 	def initialize( rules )
 		@rules=rules
