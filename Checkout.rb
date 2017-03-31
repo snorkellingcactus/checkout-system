@@ -1,34 +1,46 @@
 #!/usr/bin/env ruby
 
-class Checkout
+require_relative 'CheckoutObject.rb'
+
+class Checkout < CheckoutObject
 	attr_reader :total_with_rules
 	attr_reader :last_scanned_item
 
-	def initialize( rules )
-		@rules=rules
+	def reset
 		@total_with_rules=0
 	end
 
-	def total
+	def initialize( rules )
+		reset
+		@rules=rules
+	end
 
+	def calcFinalPriceDiff( checkout )
+		return @total_with_rules
+	end
+
+	def getFinalPriceDiff()
 		for rule in @rules
 			@total_with_rules+=rule.getFinalPriceDiff( self )
-			rule.reset
 		end
 
-		result=Float ( sprintf( '%.2f', @total_with_rules ) )
+		super( self )
+	end
 
-		@total_with_rules=0
-
-		return result
+	def total
+		return Float ( sprintf( '%.2f', getFinalPriceDiff ) )
 	end
 
 	def scanItem( item )
 		@last_scanned_item=item
-		@total_with_rules+= item.price
+		@total_with_rules+=item.price
 
 		for rule in @rules
 			rule.canApply( self )
 		end
 	end
+
+	private :reset
+	private :calcFinalPriceDiff
+	private :getFinalPriceDiff
 end

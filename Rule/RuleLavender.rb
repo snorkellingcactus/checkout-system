@@ -3,7 +3,6 @@
 require_relative 'Rule'
 
 class RuleLavender < Rule
-
 	def reset
 		super
 		@count=0

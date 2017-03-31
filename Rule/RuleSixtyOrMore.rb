@@ -3,7 +3,6 @@
 require_relative 'Rule'
 
 class RuleSixtyOrMore < Rule
-
 	def canApply( checkout )
 		return @canApply|=( checkout.total_with_rules >= 60 )
 	end

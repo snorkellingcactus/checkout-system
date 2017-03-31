@@ -1,10 +1,10 @@
 #!/usr/bin/env ruby
 
-# It is supposed to be a model in real life.
+# I'm a model.
 class Product
-	attr_accessor :name
-	attr_accessor :price
-	attr_accessor :code
+	attr_reader :name
+	attr_reader :price
+	attr_reader :code
 
 	def initialize( name , price , code )
 		@name=name

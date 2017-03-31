@@ -1,21 +1,20 @@
 #!/usr/bin/env ruby
 
-class Rule
+require_relative '../CheckoutObject.rb'
+
+class Rule < CheckoutObject
 	def reset()
+		puts "Called in #{self.class.name}"
 		@canApply=false
 	end
 
-	def initialize
-		reset
-	end
-
 	def getFinalPriceDiff( checkout )
-			if @canApply
-				return calcFinalPriceDiff( checkout )
-			end
+		if @canApply == false
+				return 0
+		end
 
-			return 0
+		super( checkout )
 	end
 
-	protected :initialize
+	protected :reset
 end
