@@ -11,4 +11,6 @@ class Product
 		@price=price
 		@code=code
 	end
+
+	protected :initialize
 end

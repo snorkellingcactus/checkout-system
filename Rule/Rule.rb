@@ -3,17 +3,18 @@
 require_relative '../CheckoutObject.rb'
 
 class Rule < CheckoutObject
-	def reset()
-		puts "Called in #{self.class.name}"
+	def reset
 		@canApply=false
 	end
 
 	def getFinalPriceDiff( checkout )
 		if @canApply == false
+				reset
+				
 				return 0
 		end
 
-		super( checkout )
+		return super
 	end
 
 	protected :reset

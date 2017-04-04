@@ -11,7 +11,7 @@ class Checkout < CheckoutObject
 	end
 
 	def initialize( rules )
-		reset
+		super()
 		@rules=rules
 	end
 
@@ -24,7 +24,7 @@ class Checkout < CheckoutObject
 			@total_with_rules+=rule.getFinalPriceDiff( self )
 		end
 
-		super( self )
+		return super( self )
 	end
 
 	def total
@@ -40,7 +40,7 @@ class Checkout < CheckoutObject
 		end
 	end
 
-	private :reset
-	private :calcFinalPriceDiff
 	private :getFinalPriceDiff
+	private :calcFinalPriceDiff
+	private :reset
 end

@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 class CheckoutObject
 	def initialize
 		reset
@@ -11,4 +13,6 @@ class CheckoutObject
 		return price_diff
 	end
 
+	protected :initialize
+	protected :getFinalPriceDiff
 end

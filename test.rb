@@ -42,12 +42,12 @@ describe 'Checkout_test_examples' do
 		end
 
 		describe "Basket #{ basket.chomp( ',' ) }" do
-			it 'Has the expected price' do
-
+			before do
 				for code in example
 					co.scanItem( items[code] )
 				end
-
+			end
+			it 'Has the expected price' do
 				co.total.must_equal results[ example_number ]
 			end
 		end
